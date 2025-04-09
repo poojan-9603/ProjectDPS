@@ -1,0 +1,16 @@
+{
+  "name": "dps",
+  "version": "1.0.0",
+  "description": "dps school",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "poojan patel",
+  "license": "ISC",
+  "dependencies": {
+    "@firebasegen/default-connector": "file:dataconnect-generated/js/default-connector",
+    "firebase": "^11.6.0",
+    "react-router-dom": "^7.5.0"
+  }
+}

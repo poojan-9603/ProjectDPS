@@ -1,0 +1,24 @@
+.dashboard-container {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex: 1;
+    margin-left: 250px; /* Same as navbar width */
+    padding: 20px;
+    transition: margin 0.3s ease;
+}
+
+/* Adjust main content when navbar is collapsed */
+.navbar.collapsed ~ .main-content {
+    margin-left: 70px; /* Same as collapsed navbar width */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 70px;
+    }
+}

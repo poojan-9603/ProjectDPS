@@ -17,7 +17,7 @@ export default function LoginPage() {
       .then((userCredential) => {
         const user = userCredential.user;
         console.log("logged in successfully: ", user);
-        navigate('/StudentDashboard');
+        navigate('/AdminDashboard');
      })
      .catch((error) => {
        setError(error.message);

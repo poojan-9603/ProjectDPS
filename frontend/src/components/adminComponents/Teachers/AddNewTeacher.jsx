@@ -8,7 +8,7 @@ export default function AddNewTeacher() {
 
     const [formData, setFormData] = useState({
         name: '',
-        email: '',
+        // email: '',
         // subject: [],
         // class: [], 
     })
@@ -70,8 +70,8 @@ export default function AddNewTeacher() {
           <label> Teacher name: </label>
           <input type="text" name="name" value={formData.name} onChange={handleChange}/>
 
-          <label> Teacher email: </label>
-          <input type="email" name="email" value={formData.email} onChange={handleChange}/>
+          {/* <label> Teacher email: </label>
+          <input type="email" name="email" value={formData.email} onChange={handleChange}/> */}
 
           {/* <label> Teacher subject: </label>
           <select multiple name="subject" value={formData.subject} onChange={handleChange}>

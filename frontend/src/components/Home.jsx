@@ -6,8 +6,10 @@ import CreateAccount from "./loginPage/CreateAccount"
 import AdminDashboard from "../components/adminComponents/AdminDashboard"
 import AddNewTeacher from "../components/adminComponents/Teachers/AddNewTeacher"
 import TeachersList from "../components/adminComponents/Teachers/TeachersList"
-import AddNewClass from "./adminComponents/School/AddNewClass"
-import AddNewCourse from "./adminComponents/School/AddNewCourse"
+import AddNewClass from "./adminComponents/School/Class/AddNewClass"
+import AddNewCourse from "./adminComponents/School/Subject/AddNewCourse"
+import ClassLandingPage from "./adminComponents/School/Class/ClassLandingPage"
+import CourseLandingPage from "./adminComponents/School/Subject/CourseLandingPage"
 // import AllTeachers from "../components/adminComponents/Teachers/TeachersListViewsType/AllTeachers"
 // import BySubjects from "../components/adminComponents/Teachers/TeachersListViewsType/BySubjects"
 // import AddNewStudent from "./studentDashboard/studentManagement/AddNewStudent"
@@ -39,6 +41,8 @@ export default function Home() {
                 <Route path="/TeachersList" element={<TeachersList/>}/>
                 <Route path="/AddNewClass" element={<AddNewClass/>}/>
                 <Route path="/AddNewCourse" element={<AddNewCourse/>}/>
+                <Route path="/ClassLandingPage" element={<ClassLandingPage />} />
+                <Route path="/CourseLandingPage" element={<CourseLandingPage />} />
                 {/* <Route path="/TeachersList/AllTeachers" element={<AllTeachers />} />
                 <Route path="/TeachersList/BySubjects" element={<BySubjects />} /> */}
                 {/* <Route path="/AddNewStudent" element={<AddNewStudent/>}/>

@@ -3,14 +3,17 @@ import { Link } from'react-router-dom';
 import axios from 'axios';
 import { useState } from 'react';
 import { useEffect } from'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function AddNewCourse(){
     const [course, setCourse] = useState({
         courseName: '',
-        courseTeacher:'' ,
+        courseTeacher:[] ,
         courseDescription: '',
     });
     const [teacher, setTeacher] = useState([]);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         axios.get('http://localhost:3000/api/teachers')
@@ -19,9 +22,7 @@ export default function AddNewCourse(){
            
     },[])
       
-    const teacherOptionSelect = (e) => {
-        
-    }
+    
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(course);
@@ -33,6 +34,10 @@ export default function AddNewCourse(){
 
     const handleChange = (e) => {
         const {name, value} = e.target;
+
+        if(value === "AddNewTeacher"){
+            navigate("/AddNewTeacher")
+        }
         setCourse({...course, [name]: value})
 
     }
@@ -52,6 +57,7 @@ export default function AddNewCourse(){
                             {t.name}
                         </option>))
                     }
+                    <option value="AddNewTeacher"> ➕ Add New Teacher   </ option>
                 </select>
 
 

@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import TeacherModel from '../../../../../../backend/models/Teacher.model';
 import {useNavigate} from "react-router-dom"
+import './AddNewClass.css';
 
 
 export default function AddNewClass(){
@@ -59,34 +60,36 @@ export default function AddNewClass(){
             <h1>DPS Class List</h1>
             {/* <Link to={}> <button>Add new Class</button> </Link> */}
 
-            <form onSubmit={handleSubmit} onChange={handleChange}>
-                <input type="text" name="className" onChange={handleChange} placeholder="Class Name"/>
-                <select name="classSubject" value={classInfo.classSubject} onChange={handleChange} >
-                    <option value="">Select Course</option>
-                    {subject.map((sub) => {
-                        return(
-                            <option key={sub._id} value={sub._id}>
-                                {sub.name}
-                            </option>
-                        )
-                    }) }
-                    <option value="AddNewCourse"> ➕ Add New Course   </ option>
-                </select>
-                <select name="classTeacher" value={classInfo.classTeacher} onChange={handleChange} >
-                    <option value="">Select Teacher</option>
-                    {teacher.map((tea) => {
-                        return(
-                            <option key={tea._id} value={tea._id}>
-                                {tea.name}
-                            </option>
-                        )
-                    }) }
-                    <option value="AddNewTeacher"> ➕ Add New Teacher   </ option>
-                </select>
-                {/* <input type="text" name="classStudent" onChange={handleChange} placeholder="Class Students"/> */}
-                <button type="submit">Add new Class</button>
+           <form onSubmit={handleSubmit} onChange={handleChange} className="add-class-form">
+  <h1 className="page-title">DPS Class List</h1>
 
-            </form>
+  <input
+    type="text"
+    name="className"
+    className="form-input"
+    onChange={handleChange}
+    placeholder="Class Name"
+  />
+
+  <select name="classSubject" value={classInfo.classSubject} onChange={handleChange} className="form-select">
+    <option value="">Select Course</option>
+    {subject.map((sub) => (
+      <option key={sub._id} value={sub._id}>{sub.name}</option>
+    ))}
+    <option value="AddNewCourse">➕ Add New Course</option>
+  </select>
+
+  <select name="classTeacher" value={classInfo.classTeacher} onChange={handleChange} className="form-select">
+    <option value="">Select Teacher</option>
+    {teacher.map((tea) => (
+      <option key={tea._id} value={tea._id}>{tea.name}</option>
+    ))}
+    <option value="AddNewTeacher">➕ Add New Teacher</option>
+  </select>
+
+  <button type="submit" className="form-submit-btn">Add New Class</button>
+</form>
+
 
             
                 

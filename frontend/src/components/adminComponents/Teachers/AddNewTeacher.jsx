@@ -2,6 +2,7 @@ import react from "react";
 import axios from "axios";
 import { useState } from "react";
 import cors from "cors";
+import './AddNewTeacher.css'; // Assuming you have a CSS file for styling
 
 export default function AddNewTeacher() {
 
@@ -24,7 +25,7 @@ export default function AddNewTeacher() {
 
         const formPayload = new FormData();
         formPayload.append('name', formData.name);
-        formPayload.append('email', formData.email);
+        // formPayload.append('email', formData.email);
         // formPayload.append('subject', formData.subject);
         // formPayload.append('class', formData.class);
         if(file){
@@ -37,7 +38,6 @@ export default function AddNewTeacher() {
                 'Content-Type': 'multipart/form-data',
             },
         });
-        console.log(formData);
         
     }
 
@@ -58,45 +58,24 @@ export default function AddNewTeacher() {
                 [e.target.name]: e.target.value,
             })
        // }
-        console.log(formData);
+        
     }
 
     return (
-    
-      <>
-        <h1>Add New Teacher</h1>
-        <form onSubmit={handleSubmit} >
-
-          <label> Teacher name: </label>
-          <input type="text" name="name" value={formData.name} onChange={handleChange}/>
-
-          {/* <label> Teacher email: </label>
-          <input type="email" name="email" value={formData.email} onChange={handleChange}/> */}
-
-          {/* <label> Teacher subject: </label>
-          <select multiple name="subject" value={formData.subject} onChange={handleChange}>
-            <option> Math </option>
-            <option> English </option>
-            <option> Science </option>
-            <option> History </option>
-          </select>
-
-          <label> Teacher class: </label>
-          <select multiple name="class" value={formData.class} onChange={handleChange}>
-            <option> Class 1 </option>
-            <option> Class 2 </option>
-            <option> Class 3 </option>
-            <option> Class 4 </option>
-          </select> */}
-          
-          <input type="file" name="file" onChange={handleFileChange}/>
-
-          <button type="submit"> Add Teacher </button>
-
-          
-
-        </form>
-      </>
-
-    )
+    <div className="add-teacher-container">
+      <h1 className="add-teacher-heading">Add New Teacher</h1>
+      <form onSubmit={handleSubmit} className="add-teacher-form">
+        <label className="form-label">Teacher name:</label>
+        <input
+          type="text"
+          name="name"
+          className="form-input"
+          value={formData.name}
+          onChange={handleChange}
+        />
+        <input type="file" name="file" className="form-file" onChange={handleFileChange} />
+        <button type="submit" className="form-button">Add Teacher</button>
+      </form>
+    </div>
+  )
   }

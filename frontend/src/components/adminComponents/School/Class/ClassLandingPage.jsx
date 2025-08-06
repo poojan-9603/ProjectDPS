@@ -6,6 +6,7 @@ import { useState } from "react"
 import axios from "axios"
 import { act } from "react"
 import { useNavigate } from "react-router-dom"
+import './AddNewClass.css';
 
 export default function ClassLandingPage(){
 
@@ -176,78 +177,56 @@ export default function ClassLandingPage(){
 
     return (
         <>
-            ClassLandingPage
+            {/* ClassLandingPage
             <Link to={"/AddNewClass"}>
             <button name="Add Class" value="Add Class"> Add Class
             </button>
-            </Link>
+            </Link> */}
 
-            <div className="classes-table-container">
-            <h2>All Classes</h2>
-            <table className="classes-table">
-                <thead>
-                    <tr>
-                        <th>Class Name</th>
-                        <th>Teacher</th>
-                        <th>Subject</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {classes.length > 0 ? (
-                        classes.map(singleClass => (
-                            <tr key={singleClass._id}>
-                                <td>{singleClass.name}</td>
-                                <td>{singleClass.teacher?.name || 'N/A'}</td>
-                                <td>{singleClass.subjects.map(sub => sub.name).join(', ')}</td>
-                                <td>
-                                    <button onClick={() => handleView(singleClass)} > View </button>
-                                    <button onClick={() => handleEdit(singleClass)} > Edit </button>
-                                    <button onClick={() => handleDelete(singleClass)} > Delete </button>
-                                </td>
-                            </tr>
-                        ))
-                    ) : (
-                        <tr>
-                            <td colSpan="4"> No classes available </td>
-                        </tr>
-                    )}
-                </tbody>
-            </table>
-        </div>
-   
+            <div className="class-landing-container">
+  <h2 className="page-title">All Classes</h2>
 
+  <Link to="/AddNewClass">
+    <button className="add-button">Add Class</button>
+  </Link>
 
+  <table className="styled-table">
+    <thead>
+      <tr>
+        <th>Class Name</th>
+        <th>Teacher</th>
+        <th>Subject</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {classes.map(singleClass => (
+        <tr key={singleClass._id}>
+          <td>{singleClass.name}</td>
+          <td>{singleClass.teacher?.name || 'N/A'}</td>
+          <td>{singleClass.subjects.map(sub => sub.name).join(', ')}</td>
+          <td>
+            <button onClick={() => handleView(singleClass)} className="view-button">View</button>
+            <button onClick={() => handleEdit(singleClass)} className="edit-button">Edit</button>
+            <button onClick={() => handleDelete(singleClass)} className="action-button delete-button">Delete</button>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
 
-
-                    {/*  */}
-                    {/*  */}
-                    {/*  */}
-                    {/*  */}
-                    {/*  */}
-                    {/*  */}
-                    {/*  */}
-                    {/*  */}
-                    {/*  */}
-
-        {viewModal && actionSelectedClass && (
-            <div className="modal-backdrop">
+{viewModal && (
+  <div className="modal-backdrop">
     <div className="modal-content">
       <h2>Class Details</h2>
       <p><strong>Class Name:</strong> {actionSelectedClass.name}</p>
-      <p><strong>Teacher:</strong> {actionSelectedClass.teacher?.name || 'N/A'}</p>
-      <p><strong>Subjects:</strong> {
-        actionSelectedClass.subjects.length > 0
-          ? actionSelectedClass.subjects.map(sub => sub.name).join(', ')
-          : 'No subjects'
-      }</p>
-
-      {/* Optional: Add other info here */}
-
-      <button onClick={() => setViewModal(false)}>Close</button>
+      <p><strong>Teacher:</strong> {actionSelectedClass.teacher?.name}</p>
+      <p><strong>Subjects:</strong> {actionSelectedClass.subjects.map(sub => sub.name).join(', ')}</p>
+      <button onClick={() => setViewModal(false)} className="modal-close-btn">Close</button>
     </div>
   </div>
-        )}
+)}
 
         {/*  */}
         {/*  */}
@@ -272,6 +251,7 @@ export default function ClassLandingPage(){
           name="name"
           value={actionSelectedClass.name}
           onChange={handleEditChange}
+          className="form-input"
         />
 
         <label>Teacher:</label>
@@ -279,6 +259,7 @@ export default function ClassLandingPage(){
           name="teacher"
           value={actionSelectedClass.teacher?._id || ''}
           onChange={handleEditChange}
+          className="form-select"
         >
           <option value="">Select Teacher</option>
           {Array.isArray(teachers) && teachers.map(teacher => (
@@ -294,6 +275,7 @@ export default function ClassLandingPage(){
           multiple
           value={actionSelectedClass.subjects.map(sub => sub._id)}
           onChange={handleSubjectChange}
+          className="form-select"
         >
           {Array.isArray(subjects) && subjects.map(subject => (
             <option key={subject._id} value={subject._id}>

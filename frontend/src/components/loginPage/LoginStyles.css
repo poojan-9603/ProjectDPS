@@ -5,6 +5,8 @@ body, html {
   width: 100%;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(-45deg, #ee7752, #c47d87, #e1cea4);
+  /* background: linear-gradient(-45deg, #424242, #646363, #2e2a22); */
+
   background-size: 400% 400%;
   animation: gradientBG 15s ease infinite;
   overflow-x: hidden;

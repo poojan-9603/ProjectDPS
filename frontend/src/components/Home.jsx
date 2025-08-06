@@ -10,6 +10,8 @@ import AddNewClass from "./adminComponents/School/Class/AddNewClass"
 import AddNewCourse from "./adminComponents/School/Subject/AddNewCourse"
 import ClassLandingPage from "./adminComponents/School/Class/ClassLandingPage"
 import CourseLandingPage from "./adminComponents/School/Subject/CourseLandingPage"
+import StudentsLandingPage from "./adminComponents/Students/StudentsLandingPage"
+import AddNewStudent from "./adminComponents/Students/AddNewStudent"
 // import AllTeachers from "../components/adminComponents/Teachers/TeachersListViewsType/AllTeachers"
 // import BySubjects from "../components/adminComponents/Teachers/TeachersListViewsType/BySubjects"
 // import AddNewStudent from "./studentDashboard/studentManagement/AddNewStudent"
@@ -43,6 +45,9 @@ export default function Home() {
                 <Route path="/AddNewCourse" element={<AddNewCourse/>}/>
                 <Route path="/ClassLandingPage" element={<ClassLandingPage />} />
                 <Route path="/CourseLandingPage" element={<CourseLandingPage />} />
+                <Route path="/StudentsLandingPage" element={<StudentsLandingPage />} />
+                <Route path="/AddNewStudent" element={<AddNewStudent />} />
+
                 {/* <Route path="/TeachersList/AllTeachers" element={<AllTeachers />} />
                 <Route path="/TeachersList/BySubjects" element={<BySubjects />} /> */}
                 {/* <Route path="/AddNewStudent" element={<AddNewStudent/>}/>

@@ -1,0 +1,157 @@
+/* Shared Container */
+.add-student-container, .students-container {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+/* Titles */
+.add-student-title, .students-title {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Buttons */
+.back-button, .submit-button, .students-btn {
+  margin-top: 15px;
+  padding: 8px 14px;
+  background-color: #0b63f6;
+  border: none;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.back-button {
+  background-color: #888;
+  margin-bottom: 15px;
+}
+
+.students-btn.add {
+  background-color: #34a853;
+  margin-right: 10px;
+}
+
+.students-btn.delete {
+  background-color: #ea4335;
+}
+
+.students-btn.small {
+  font-size: 0.9rem;
+  padding: 6px 10px;
+}
+
+.students-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+/* Form Inputs */
+.student-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.student-input,
+.student-select,
+.student-multiselect {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.student-multiselect {
+  height: 120px;
+}
+
+.form-label {
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+/* Table */
+.students-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: #fff;
+  border: 1px solid #ddd;
+}
+
+.students-table th,
+.students-table td {
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+.students-table th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+/* Modal */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  width: 400px;
+  max-width: 90%;
+}
+
+.modal-content input,
+.modal-content select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.modal-buttons button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-buttons button:first-child {
+  background-color: #4caf50;
+  color: white;
+}
+
+.modal-buttons button:last-child {
+  background-color: #ccc;
+  color: #333;
+}
+.modal-buttons button:hover {
+  opacity: 0.9;
+}

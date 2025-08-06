@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { use } from 'react'
+import './TeachersList.css'; // Assuming you have a CSS file for styling
 
 
 
@@ -140,43 +141,46 @@ export default function TeachersList() {
     if (isAllTeachers) {
         return (
             <>
-                <h1>Teachers List</h1>
 
-
-                <button name="viewToggleButton" value="viewToggleButton" onClick={() => setIsAllTeachers(prev => !prev)}> Switch view </button>
-                <button> <Link to={"/AddNewTeacher"}> Add New Teacher </Link></button>
+            <div className="teachers-container">
+    <h1 className="teachers-title">Teachers List</h1>
+    <div className="teachers-actions">
+      <button onClick={() => setIsAllTeachers(prev => !prev)} className="toggle-view-button">Switch View</button>
+      <Link to={"/AddNewTeacher"}><button className="add-teacher-button">Add New Teacher</button></Link>
+    </div>
+    </div>
+            
                 <p> All Teachers Views </p>
 
 
                 <p>All Teachers (Table View)</p>
-                <table border="1" cellPadding="8" cellSpacing="0">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Subjects</th>
-                            <th>Classes</th>
-                            <th> Actions </th>
-                        </tr>
-                    </thead>
+                <table className="teachers-table" border="1" cellPadding="8" cellSpacing="0">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Subjects</th>
+      <th>Classes</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {teachers.map(teacher => (
+      <tr key={teacher._id}>
+        <td>{teacher.name}</td>
+        <td>{teacher.email}</td>
+        <td>{teacher.subjects.length > 0 ? teacher.subjects.map(subject => subject.name).join(', ') : <Link to={"/AddNewCourse"}>Add Subject</Link>}</td>
+        <td>{teacher.classes.length > 0 ? teacher.classes.map(c => c.name).join(', ') : <Link to={"/AddNewClass"}>Add Class</Link>}</td>
+        <td className="teachers-actions-buttons">
+          <button onClick={() => handleView(teacher)}>View</button>
+          <button onClick={() => handleEdit(teacher)}>Edit</button>
+          <button onClick={() => handleDelete(teacher)}>Delete</button>
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>
 
-                    <tbody>
-                        {teachers.map(teacher => (
-                            <tr key={teacher._id}>
-                                <td>{teacher.name}</td>
-                                <td>{teacher.email}</td>
-                                <td>{teacher.subjects.length > 0 ? teacher.subjects.map(subject => subject.name).join(', ') : <Link to={"/AddNewCourse"}> Add Subject </Link>}</td>
-                                <td>{teacher.classes.length > 0 ? teacher.classes.map(c => c.name).join(', ') : <Link to={"/AddNewClass"}> Add Class </Link>}</td>
-                                <td>
-                                    <button onClick={() => handleView(teacher)} > View </button>
-                                    <button onClick={() => handleEdit(teacher)} > Edit </button>
-                                    <button onClick={() => handleDelete(teacher)} > Delete </button>
-                                </td>
-                            </tr>
-                        ))}
-
-                    </tbody>
-                </table>
 
 
                 {/*  */}
@@ -190,27 +194,17 @@ export default function TeachersList() {
                 {/*  */}
 
                 {viewModal && actionSelectedTeacher && (
-                    <div className="modal-backdrop">
-                        <div className="modal-content">
-                            <h2>Teacher Details</h2>
-                            <p><strong>Teacher Name:</strong> {actionSelectedTeacher.name}</p>
+  <div className="modal-backdrop">
+    <div className="modal-content">
+      <h2 className="modal-title">Teacher Details</h2>
+      <p><strong>Teacher Name:</strong> {actionSelectedTeacher.name}</p>
+      <p><strong>Class:</strong> ...</p>
+      <p><strong>Subjects:</strong> ...</p>
+      <button onClick={() => setViewModal(false)} className="modal-close">Close</button>
+    </div>
+  </div>
+)}
 
-                            <p><strong>Class:</strong> {
-                                actionSelectedTeacher.classes.length > 0 ?
-                                    actionSelectedTeacher.classes.map(cls => cls.name).join(',') : 'N/A'}</p>
-
-                            <p><strong>Subjects:</strong> {
-                                actionSelectedTeacher.subjects.length > 0
-                                    ? actionSelectedTeacher.subjects.map(sub => sub.name).join(', ')
-                                    : 'No subjects'
-                            }</p>
-
-                            {/* Optional: Add other info here */}
-
-                            <button onClick={() => setViewModal(false)}>Close</button>
-                        </div>
-                    </div>
-                )}
 
                 {/*  */}
                 {/*  */}

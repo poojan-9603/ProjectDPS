@@ -12,6 +12,10 @@ import ClassLandingPage from "./adminComponents/School/Class/ClassLandingPage"
 import CourseLandingPage from "./adminComponents/School/Subject/CourseLandingPage"
 import StudentsLandingPage from "./adminComponents/Students/StudentsLandingPage"
 import AddNewStudent from "./adminComponents/Students/AddNewStudent"
+import TimetableLandingPage from "./adminComponents/School/Timetable/TimetableLandingPage"
+import AddNewTimetable from "./adminComponents/School/Timetable/AddNewTimetable"
+import TimetableModal from "./adminComponents/School/Timetable/TimetableModal"
+import TimetableGrid from "./adminComponents/School/Timetable/TimetableGrid"
 // import AllTeachers from "../components/adminComponents/Teachers/TeachersListViewsType/AllTeachers"
 // import BySubjects from "../components/adminComponents/Teachers/TeachersListViewsType/BySubjects"
 // import AddNewStudent from "./studentDashboard/studentManagement/AddNewStudent"
@@ -47,6 +51,10 @@ export default function Home() {
                 <Route path="/CourseLandingPage" element={<CourseLandingPage />} />
                 <Route path="/StudentsLandingPage" element={<StudentsLandingPage />} />
                 <Route path="/AddNewStudent" element={<AddNewStudent />} />
+                <Route path="/Timetable" element={<TimetableLandingPage />} />
+                <Route path="/AddNewTimetable" element={<AddNewTimetable />} />
+                <Route path="/TimetableGrid" element={<TimetableGrid />} />
+                <Route path="/TimetableModal" element={<TimetableModal />} />
 
                 {/* <Route path="/TeachersList/AllTeachers" element={<AllTeachers />} />
                 <Route path="/TeachersList/BySubjects" element={<BySubjects />} /> */}
